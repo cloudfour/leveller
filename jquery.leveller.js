@@ -1,11 +1,14 @@
-(function (factory, global) {
+(function (factory) {
 
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    // Node/CommonJS
+    factory(require('jquery'));
   } else {
-    // Browser globals.
-    factory(global.jQuery);
+    // Browser globals
+    factory(jQuery);
   }
 
 }(function ($) {
@@ -125,4 +128,4 @@
   $.fn.leveller = Plugin;
   $.fn.leveller.Constructor = Leveller;
 
-}, this));
+}));
