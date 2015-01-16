@@ -112,7 +112,7 @@
     var options = $.extend({}, Leveller.DEFAULTS, typeof option == 'object' && option);
 
     if (!data) {
-      if (options.level && option == 'reset') options.level = false;
+      if (options.level && option === 'reset') options.level = false;
       this.data(Leveller.DATA_KEY, (data = new Leveller(this, options)));
     }
 
