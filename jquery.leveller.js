@@ -24,7 +24,6 @@
     level: true,
     resetBefore: true,
     cssProperty: 'height',
-    cssSelector: false,
     heightMethod: 'height',
     offsetMethod: 'offset',
     alignment: 'top'
