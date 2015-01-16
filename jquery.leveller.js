@@ -25,7 +25,7 @@
     resetBefore: true,
     cssProperty: 'height',
     cssSelector: false,
-    heightMethod: 'outerHeight',
+    heightMethod: 'height',
     offsetMethod: 'offset',
     alignment: 'top'
   };
@@ -63,6 +63,11 @@
     var styleValue = targetHeight;
     if (this.options.cssProperty.indexOf('eight') < 0) {
       styleValue = parseInt($styleElement.css(this.options.cssProperty), 10) + diff;
+    }
+    if (typeof this.options.adjustBy === 'string') {
+      styleValue += parseInt($element.css(this.options.adjustBy), 10);
+    } else if (typeof this.options.adjustBy === "number") {
+      styleValue += this.options.adjustBy;
     }
     $styleElement.css(this.options.cssProperty, styleValue);
   };
