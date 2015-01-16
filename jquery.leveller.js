@@ -30,8 +30,6 @@
     alignment: 'top'
   };
 
-  Leveller.HEIGHT_PROPS = [ 'height', 'min-height', 'max-height' ];
-
   Leveller.prototype.level = function () {
     var i = 0;
     var perRow = this.options.columns || this.getPerRow();
@@ -63,7 +61,7 @@
 
     var $styleElement = this.options.cssSelector ? $element.find(this.options.cssSelector) : $element;
     var styleValue = targetHeight;
-    if (Leveller.HEIGHT_PROPS.indexOf(this.options.cssProperty) === -1) {
+    if (this.options.cssProperty.indexOf('eight') < 0) {
       styleValue = parseInt($styleElement.css(this.options.cssProperty), 10) + diff;
     }
     $styleElement.css(this.options.cssProperty, styleValue);
