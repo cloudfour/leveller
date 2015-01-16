@@ -109,7 +109,7 @@
 
   function Plugin (option) {
     var data = this.data(Leveller.DATA_KEY);
-    var options = $.extend({}, Leveller.DEFAULTS, typeof option == 'object' && option);
+    var options = $.extend({}, Leveller.DEFAULTS, typeof option === 'object' && option);
 
     if (!data) {
       if (options.level && option === 'reset') options.level = false;
