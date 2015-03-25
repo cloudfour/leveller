@@ -3,10 +3,15 @@
 <head>
   <title>Leveller demo</title>
   <style>
+
+    /* Scaffolding */
+
     html {
-      background: #eee;
+      background: #f6f6f6;
       box-sizing: border-box;
+      color: #444;
       font-family: sans-serif;
+      line-height: 1.4;
     }
 
     *, *:before, *:after {
@@ -14,107 +19,236 @@
     }
 
     body {
-      margin: 0 auto;
-      max-width: 52rem;
-      padding: 2rem;
-    }
-
-    h1 {
-      color: #666;
-      font-size: 1.5rem;
-      font-weight: normal;
       margin: 0;
     }
 
-    .boxes {
-      font-size: 0;
-      margin: 1rem -1rem;
-      overflow: hidden;
-      position: relative;
+    a {
+      color: #0088cc;
+      text-decoration: none;
     }
 
-    .box {
-      background: #fff;
-      border: 2px solid #bbb;
+    /* Demo base styles */
+
+    .demo {
+      background-color: #444;
+    }
+
+    .demo-options {
+      /*border-radius: 0.5rem;*/
+      /*border: 3px solid #222;*/
+      /*box-shadow: 0 0 0 3px rgba(0,0,0,0.4);*/
+      /*border-color: #222;*/
+      /*border-style: solid;*/
+      /*border-width: 3px 0;*/
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 24rem;
+      overflow: hidden;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .demo-option {
+      display: table-cell;
+    }
+
+    .demo-option input {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    .demo-option label {
+      background-color: #fff;
+      color: #0088cc;
+      cursor: pointer;
+      display: block;
+      padding: 0.5rem 0;
+      text-align: center;
+    }
+
+    /*.demo-option:first-child label {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    .demo-option:last-child label {
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }*/
+
+    .demo-option input:checked + label {
+      background-color: #0088cc;
+      color: #fff;
+    }
+
+    .columns {
+      font-size: 0;
+      list-style: none;
+      overflow: hidden;
+      padding: 0.5rem;
+    }
+
+    .column {
       display: inline-block;
       font-size: 1rem;
-      line-height: 1.3;
-      margin: 1rem;
-      padding: 1rem;
-      vertical-align: bottom;
-      width: 8rem;
+      padding: 0.5rem;
+      vertical-align: top;
+      width: 50%;
     }
+
+      @media (min-width: 30em) {
+        .column {
+          width: 33.33333333%;
+        }
+      }
+
+      @media (min-width: 48em) {
+        .column {
+          width: 16.66666666%;
+        }
+      }
+
+    .tile {
+      background: #fff;
+      border: 3px solid #222;
+      padding: 1rem;
+    }
+
+    .tile-main,
+    .tile-footer {
+      margin: 0;
+    }
+
+    .tile-main {
+      font-size: 1.125em;
+      line-height: 1.2;
+    }
+
+    .tile-footer {
+      color: #aaa;
+    }
+
+    /* Flexbox demo */
+
+    .columns-flex,
+    .columns-flex .column,
+    .columns-flex .tile {
+      display: flex;
+    }
+
+    .columns-flex {
+      flex-wrap: wrap;
+    }
+
+    .columns-flex .column,
+    .columns-flex .tile {
+      flex-direction: column;
+    }
+
+    .columns-flex .tile,
+    .columns-flex .tile-main {
+      flex: 1;
+    }
+
   </style>
 </head>
 <body>
 
-<h1>The Beatles</h1>
+<header>
+  <h1>leveller.js</h1>
+  <p>A jQuery plugin for equalizing element heights per row (when <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a> isn&rsquo;t an option).</p>
+</header>
 
-<div class="boxes">
-  <div class="box">
-    <div>Please Please Me</div>
-    <button>Listen</button>
+<main class="demo">
+
+  <div class="demo-options">
+    <div class="demo-option">
+      <input type="radio" name="demo" value="none" id="demo-none" checked />
+      <label for="demo-none">Before</label>
+    </div>
+    <div class="demo-option">
+      <input type="radio" name="demo" value="flexbox" id="demo-flexbox" />
+      <label for="demo-flexbox">Flexbox</label>
+    </div>
+    <div class="demo-option">
+      <input type="radio" name="demo" value="leveller" id="demo-leveller" />
+      <label for="demo-leveller">leveller.js</label>
+    </div>
   </div>
-  <div class="box">
-    <div>With the Beatles</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>A Hard Day&rsquo;s Night</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Beatles for Sale</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Help!</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Rubber Soul</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Revolver</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Sgt. Pepper&rsquo;s Lonely Hearts Club Band</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>The Beatles</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Yellow Submarine</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Abbey Road</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Let It Be</div>
-    <button>Listen</button>
-  </div>
-</div>
+
+  <ul class="columns">
+    <li class="column">
+      <div class="tile">
+        <p class="tile-main">The Man in the High Castle</p>
+        <p class="tile-footer"><time>1962</time></p>
+      </div>
+    </li>
+    <li class="column">
+      <div class="tile">
+        <p class="tile-main">Martian Time-Slip</p>
+        <p class="tile-footer"><time>1964</time></p>
+      </div>
+    </li>
+    <li class="column">
+      <div class="tile">
+        <p class="tile-main">Do An&shy;droids Dream of Electric Sheep?</p>
+        <p class="tile-footer"><time>1968</time></p>
+      </div>
+    </li>
+    <li class="column">
+      <div class="tile">
+        <p class="tile-main">Ubik</p>
+        <p class="tile-footer"><time>1969</time></p>
+      </div>
+    </li>
+    <li class="column">
+      <div class="tile">
+        <p class="tile-main">Flow My Tears, the Police&shy;man Said</p>
+        <p class="tile-footer"><time>1974</time></p>
+      </div>
+    </li>
+    <li class="column">
+      <div class="tile">
+        <p class="tile-main">A Scanner Darkly</p>
+        <p class="tile-footer"><time>1977</time></p>
+      </div>
+    </li>
+  </ul>
+
+</main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="jquery.leveller.js"></script>
 <script>
 $(function(){
-  // initialization with advanced options
-  $('.box').leveller({
-    alignment: 'bottom',
-    cssSelector: 'button',
-    cssProperty: 'margin-top',
-    adjustBy: 'border-top'
+  var $container = $('.columns'),
+    $tiles = $('.tile');
+
+  $tiles.leveller({
+    level: false,
+    cssSelector: '.tile-footer',
+    cssProperty: 'margin-top'
   });
-  // level again on resize
-  $(window).resize(function(){
-    $('.box').leveller();
+
+  $('[name="demo"]').on('change', function () {
+    var val = $(this).val();
+    $container.toggleClass('columns-flex', val === 'flexbox');
+    if (val === 'leveller') {
+      $tiles.leveller('level');
+      $(window).on('resize.leveller', function () {
+        $tiles.leveller('level');
+      });
+    } else {
+      $tiles.leveller('reset');
+      $(window).off('resize.leveller');
+    }
   });
 });
 </script>
