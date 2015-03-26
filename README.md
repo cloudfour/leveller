@@ -70,8 +70,8 @@ Option | Default | Description
 --- | --- | ---
 `level` | `true` | Whether or not to `level` right away by default.
 `resetBefore` | `true` | If `false`, it will not reset the adjustable property before making new adjustments. This can have weird results, but may be necessary if you have other plugins or JS modifying styles.
-`cssProperty` | `'height'` | The CSS property to modify to adjust the height.
-`heightMethod` | `'height'` | The jQuery method to use to determine the element's height. Could also be `outerHeight` or `innerHeight`.
+`cssProperty` | `'min-height'` | The CSS property to modify to adjust the height.
+`heightMethod` | `'outerHeight'` | The jQuery method to use to determine the element's height. Could also be `height` or `innerHeight`.
 `offsetMethod` | `'offset'` | The jQuery method to use to determine the element's position. Could also be `position`.
 `alignment` | `'top'` | Can also be `middle` or `bottom` depending on the default alignment of your elements.
 `cssSelector` | | A child selector within the parent element to modify instead of the parent (useful for adding space between child elements instead of affecting the overall height).

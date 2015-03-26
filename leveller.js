@@ -26,8 +26,8 @@
   Leveller.DEFAULTS = {
     level: true,
     resetBefore: true,
-    cssProperty: 'height',
-    heightMethod: 'height',
+    cssProperty: 'min-height',
+    heightMethod: 'outerHeight',
     offsetMethod: 'offset',
     alignment: 'top'
   };
@@ -62,15 +62,24 @@
     if (diff === 0) return;
 
     var $styleElement = this.options.cssSelector ? $element.find(this.options.cssSelector) : $element;
-    var styleValue = targetHeight;
-    if (this.options.cssSelector || this.options.cssProperty.indexOf('eight') < 0) {
+    var styleValue;
+
+    if (this.options.cssProperty.indexOf('eight') > 0) {
+      if (this.options.cssSelector) {
+        styleValue = $styleElement[this.options.heightMethod]() + diff;
+      } else {
+        styleValue = targetHeight;
+      }
+    } else {
       styleValue = parseInt($styleElement.css(this.options.cssProperty), 10) + diff;
     }
+
     if (typeof this.options.adjustBy === 'string') {
       styleValue += parseInt($element.css(this.options.adjustBy), 10);
     } else if (typeof this.options.adjustBy === "number") {
       styleValue += this.options.adjustBy;
     }
+
     $styleElement.css(this.options.cssProperty, styleValue);
   };
 
