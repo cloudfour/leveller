@@ -100,8 +100,6 @@
     .list-inline {
       font-size: 0;
       list-style: none;
-      margin-left: -0.25rem;
-      margin-right: -0.25rem;
       padding-left: 0;
       position: relative;
     }
@@ -187,21 +185,33 @@
     .columns-flex,
     .columns-flex .column,
     .columns-flex .tile {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
     }
 
     .columns-flex {
-      flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
     }
 
     .columns-flex .column,
     .columns-flex .tile {
-      flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
     }
 
     .columns-flex .tile,
     .columns-flex .tile-main {
-      flex: 1;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
     }
 
   </style>
@@ -372,13 +382,15 @@
       </li>
     </ul>
     <div class="container text-center">
-      <pre><code>$('#example .tile').leveller({
+      <pre><code>var $tiles = $('#example .tile');
+
+$tiles.leveller({
   cssSelector: '.tile-footer',
   cssProperty: 'margin-top'
 });
 
 $(window).resize(function(){
-  $('#example .tile').leveller();
+  $tiles.leveller();
 });</code></pre>
     </div>
   </div>
@@ -402,15 +414,19 @@ $(window).resize(function(){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="jquery.leveller.js"></script>
 <script>
-$(function(){
-  $('#example .tile').leveller({
+$(window).load(function(){
+
+  var $tiles = $('#example .tile');
+
+  $tiles.leveller({
     cssSelector: '.tile-footer',
     cssProperty: 'margin-top'
   });
 
   $(window).resize(function(){
-    $('#example .tile').leveller();
+    $tiles.leveller();
   });
+
 });
 </script>
 
