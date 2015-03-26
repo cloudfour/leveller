@@ -2,13 +2,13 @@
   "name": "leveller",
   "version": "0.1.2",
   "description": "A jQuery plugin for equalizing element heights.",
-  "main": "jquery.leveller.js",
+  "main": "leveller.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cloudfour/leveller.js.git"
+    "url": "https://github.com/cloudfour/leveller.git"
   },
   "keywords": [
     "jquery-plugin",
@@ -17,7 +17,7 @@
   "author": "Cloud Four",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cloudfour/leveller.js/issues"
+    "url": "https://github.com/cloudfour/leveller/issues"
   },
-  "homepage": "https://github.com/cloudfour/leveller.js"
+  "homepage": "https://github.com/cloudfour/leveller"
 }
