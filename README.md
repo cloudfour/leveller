@@ -61,7 +61,7 @@ $(window).resize(function(){
 Reset tile heights that have been set with Leveller:
 
 ```javascript
-$(elements).leveller('reset');
+$('.example .column').leveller('reset');
 ```
 
 ## Options
@@ -77,6 +77,60 @@ Option | Default | Description
 `cssSelector` | | A child selector within the parent element to modify instead of the parent (useful for adding space between child elements instead of affecting the overall height).
 `columns` | | If specified, the plugin won't attempt to determine the column count per row. This can help performance if you know the column count will always be the same.
 `adjustBy` | | If the new heights are just a _tad_ off, specifying this option can allow you to adjust them by a number (`2`) or a CSS property (`border-top`).
+
+## Troubleshooting
+
+### Inconsistent heights
+
+Leveller adjusts elements at the time it's called. If images, fonts or other external resources affect the layout later, the sizing will be off.
+
+The solution is to call Leveller when the elements are ready to be equalized:
+
+```javascript
+// run leveller after the page has loaded
+$(window).load(function(){
+  $('.example .column').leveller();
+});
+```
+
+This can also happen if you attempt to equalize elements that aren't visible yet (in a modal, for example). This can be resolved the same way:
+
+```javascript
+// run leveller after the Bootstrap modal is shown
+$('#myModal').on('shown.bs.modal', function(){
+  $(this).find('.column').leveller();
+});
+```
+
+### Margin adjustments result in incorrect heights
+
+This is most likely due to [margin collapsing](https://developer.mozilla.org/en-US/docs/Web/CSS/margin_collapsing), and there are a few ways you can attempt to resolve.
+
+You can stop margin collapsing in CSS using [the `clear` property](https://developer.mozilla.org/en-US/docs/Web/CSS/clear).
+
+You can try specifying a different property that _doesn't_ collapse (for example, `padding-bottom` instead of `margin-bottom`).
+
+Finally, there's the `adjustBy` option which lets you tweak height adjustments:
+
+```javascript
+$('.example .column').leveller({
+  cssSelector: '.example-footer',
+  cssProperty: 'margin-top'
+  adjustBy: 4 // height adjustments will be 4px greater
+});
+```
+
+If we wanted to base the value on the margin that's collapsing, we could do something like this:
+
+```javascript
+$('.example .column').leveller({
+  cssSelector: '.example-footer',
+  cssProperty: 'margin-top'
+  adjustBy: parseInt($('.example-body').css('margin-bottom'), 10)
+});
+```
+
+But it's probably cleaner to use a different property or tweak your CSS!
 
 ## History
 
