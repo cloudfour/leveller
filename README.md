@@ -1,6 +1,6 @@
 # Leveller
 
-A jQuery plugin for equalizing element heights. Works in IE8 and up.
+A jQuery plugin for equalizing element heights.
 
 If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/a-guide-to-flexbox/). See the [demo]() for an example.
 
