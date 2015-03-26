@@ -4,7 +4,7 @@ A jQuery plugin for equalizing element heights.
 
 If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/a-guide-to-flexbox/). See the [demo]() for an example.
 
-If you only need to adjust heights, [Equalizer](https://github.com/skrajewski/Equalizer) is a leaner, dependency-free solution. If you need to equalize widths, check out [equalize.js](https://github.com/tsvensen/equalize.js).
+For simple, single-row adjustments, [Equalizer](https://github.com/skrajewski/Equalizer) is a leaner, dependency-free solution.
 
 - [Blog post]()
 - [Live demo]()
@@ -34,13 +34,13 @@ require('leveller');
 Equalize element heights across rows:
 
 ```javascript
-$('.example').leveller();
+$('.example .column').leveller();
 ```
 
 Apply adjustments to a property of a child element:
 
 ```javascript
-$('.example').leveller({
+$('.example .column').leveller({
   cssSelector: '.example-footer',
   cssProperty: 'margin-top'
 });
@@ -50,15 +50,15 @@ Adjust on window resize:
 
 ```javascript
 // pass along options (if any) the first time
-$('.example').leveller({ /* ... */ });
+$('.example .column').leveller({ /* ... */ });
 
 $(window).resize(function(){
   // calling again on the same elements will retain options
-  $('.example').leveller();
+  $('.example .column').leveller();
 });
 ```
 
-Reset tile heights that have been set with leveller:
+Reset tile heights that have been set with Leveller:
 
 ```javascript
 $(elements).leveller('reset');
