@@ -61,15 +61,14 @@
     var diff = targetHeight - currentHeight;
     if (diff === 0) return;
 
+    var isHeightProperty = (this.options.cssProperty.indexOf('eight') > 0);
     var $styleElement = this.options.cssSelector ? $element.find(this.options.cssSelector) : $element;
     var styleValue;
 
-    if (this.options.cssProperty.indexOf('eight') > 0) {
-      if (this.options.cssSelector) {
-        styleValue = $styleElement[this.options.heightMethod]() + diff;
-      } else {
-        styleValue = targetHeight;
-      }
+    if (isHeightProperty && this.options.cssSelector) {
+      styleValue = $styleElement[this.options.heightMethod]() + diff;
+    } else if (isHeightProperty) {
+      styleValue = targetHeight;
     } else {
       styleValue = parseInt($styleElement.css(this.options.cssProperty), 10) + diff;
     }
