@@ -24,6 +24,7 @@
 
     body {
       margin: 0;
+      padding-bottom: 2rem;
     }
 
     a {
@@ -61,9 +62,13 @@
     }
 
     .text-cautionary {
-      color: #999;
       font-size: 1.5rem;
       font-style: italic;
+      margin-top: 2rem;
+    }
+
+    .text-byline {
+      font-size: 0.875rem;
     }
 
     .no-wrap {
@@ -74,7 +79,7 @@
       font-size: 1.125rem;
     }
 
-    .container-prose {
+    .container {
       margin-left: auto;
       margin-right: auto;
       max-width: 32rem;
@@ -97,7 +102,6 @@
       list-style: none;
       margin-left: -0.25rem;
       margin-right: -0.25rem;
-      overflow: hidden;
       padding-left: 0;
       position: relative;
     }
@@ -107,10 +111,12 @@
       font-size: 1rem;
       margin-left: 0.25rem;
       margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
     }
 
     .btn {
-      border: 1px solid currentColor;
+      background-color: #fff;
+      border: 2px solid currentColor;
       display: inline-block;
       font-size: 1.125rem;
       font-weight: bold;
@@ -203,7 +209,7 @@
 <body>
 
 <header class="light">
-  <div class="container-prose text-center">
+  <div class="container text-center">
     <h1><a href="">leveller.js</a></h1>
     <p class="lead">A jQuery plugin for equalizing <span class="no-wrap">element heights</span>.</p>
   </div>
@@ -211,7 +217,7 @@
 
 <main>
 
-  <div class="container-prose">
+  <div class="container">
     <h2 class="text-center">The Problem</h2>
     <p>These tiles vary in height, making them difficult to scan visually.</p>
   </div>
@@ -257,7 +263,7 @@
     </ul>
   </div>
 
-  <div class="container-prose">
+  <div class="container">
     <h2 class="text-center">Try This First</h2>
     <p>Before using this plugin, see if <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a> might solve the problem.</p>
   </div>
@@ -301,7 +307,7 @@
         </div>
       </li>
     </ul>
-    <div class="container-prose text-center">
+    <div class="container text-center">
       <pre><code>.columns, .column, .tile {
   display: flex;
 }
@@ -320,7 +326,7 @@
     </div>
   </div>
 
-  <div class="container-prose">
+  <div class="container">
     <h2 class="text-center">When All Else Fails</h2>
     <p>Maybe you inherited someone else's code. Maybe you&rsquo;re still supporting some ancient browser. Or maybe that frame&shy;work every&shy;one tweeted about last month doesn't want to play nice with your adjust&shy;ments.</p>
     <p>In those cases, <b>leveller.js</b> can help.</p>
@@ -365,28 +371,32 @@
         </div>
       </li>
     </ul>
-    <div class="container-prose text-center">
+    <div class="container text-center">
       <pre><code>$('#example .tile').leveller({
   cssSelector: '.tile-footer',
   cssProperty: 'margin-top'
+});
+
+$(window).resize(function(){
+  $('#example .tile').leveller();
 });</code></pre>
     </div>
   </div>
 
 
-  <p class="container-prose text-center text-cautionary">Please level responsibly.</p>
+  <p class="container text-center text-cautionary">Please level responsibly.</p>
 
   <div class="text-center">
     <ul class="list-inline">
       <li><a href="" class="btn">Blog post</a></li>
-      <li><a href="" class="btn btn-primary">View on Github</a></li>
+      <li><a href="" class="btn btn-primary">View on GitHub</a></li>
     </ul>
   </div>
 
 </main>
 
-<footer class="container-prose text-center">
-  <p>Made by your friends at <a href="http://cloudfour.com">Cloud Four</a></p>
+<footer class="container text-center">
+  <p class="text-byline">Made by your friends at <a href="http://cloudfour.com">Cloud Four</a></p>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -398,7 +408,7 @@ $(function(){
     cssProperty: 'margin-top'
   });
 
-  $(window).on('resize', function () {
+  $(window).resize(function(){
     $('#example .tile').leveller();
   });
 });
