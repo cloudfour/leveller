@@ -41,8 +41,8 @@ Apply adjustments to a property of a child element:
 
 ```javascript
 $('.example .column').leveller({
-  cssSelector: '.example-footer',
-  cssProperty: 'margin-top'
+  cssSelector: '.column-footer',
+  cssProperty: 'padding-top'
 });
 ```
 
@@ -114,7 +114,7 @@ Finally, there's the `adjustBy` option which lets you tweak height adjustments:
 
 ```javascript
 $('.example .column').leveller({
-  cssSelector: '.example-footer',
+  cssSelector: '.column-footer',
   cssProperty: 'margin-top'
   adjustBy: 4 // height adjustments will be 4px greater
 });
@@ -124,9 +124,9 @@ If we wanted to base the value on the margin that's collapsing, we could do some
 
 ```javascript
 $('.example .column').leveller({
-  cssSelector: '.example-footer',
+  cssSelector: '.column-footer',
   cssProperty: 'margin-top'
-  adjustBy: parseInt($('.example-body').css('margin-bottom'), 10)
+  adjustBy: parseInt($('.column-body').css('margin-bottom'), 10)
 });
 ```
 
