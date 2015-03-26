@@ -6,8 +6,8 @@ If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/
 
 For simple, single-row adjustments, [Equalizer](https://github.com/skrajewski/Equalizer) is a leaner, dependency-free solution.
 
-- [Blog post]()
-- [Live demo]()
+- [Blog post](http://blog.cloudfour.com/leveller/)
+- [Live demo](http://cloudfour.github.io/leveller/)
 
 ## Installation
 
