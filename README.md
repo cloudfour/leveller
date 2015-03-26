@@ -134,7 +134,7 @@ But it's probably cleaner to use a different property or tweak your CSS!
 
 ## History
 
-- **0.1.2**: Improved docs, `package.json`
+- **1.0.0**: Tweaks, docs, publication
 - **0.1.1**: UMD definition and strict equality
 - **0.1.0**: Hello world!
 
