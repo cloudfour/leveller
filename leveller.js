@@ -63,7 +63,7 @@
 
     var $styleElement = this.options.cssSelector ? $element.find(this.options.cssSelector) : $element;
     var styleValue = targetHeight;
-    if (this.options.cssProperty.indexOf('eight') < 0) {
+    if (this.options.cssSelector || this.options.cssProperty.indexOf('eight') < 0) {
       styleValue = parseInt($styleElement.css(this.options.cssProperty), 10) + diff;
     }
     if (typeof this.options.adjustBy === 'string') {
