@@ -1,29 +1,60 @@
-# leveller.js
+# Leveller
 
-Levels elements per row so that their heights match. Right now it's a jQuery plugin, but a vanilla JS version is planned.
+A jQuery plugin for equalizing element heights. Works in IE8 and up.
 
-This is super early right now. You're welcome to give it a whirl, but we don't have any fancy demos or even cross-browser testing yet. Consider this a version `0.1`.
+If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/a-guide-to-flexbox/). See the [demo]() for an example.
 
-If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+If you only need to adjust heights, [Equalizer](https://github.com/skrajewski/Equalizer) is a leaner, dependency-free solution. If you need to equalize widths, check out [equalize.js](https://github.com/tsvensen/equalize.js).
 
-If you only have a single row or you need to equalize widths, you should try [equalize.js](https://github.com/tsvensen/equalize.js).
+- [Blog post]()
+- [Live demo]()
+
+## Installation
+
+Include the plugin after you've included [jQuery](http://jquery.com/):
+
+```html
+<script src="path/to/jquery.min.js"></script>
+<script src="path/to/leveller.min.js"></script>
+```
+
+### Using [npm](https://www.npmjs.com/) and [Browserify](http://browserify.org/)
+
+```
+npm install --save jquery
+npm install --save leveller
+```
+```javascript
+var $ = require('jquery');
+require('leveller');
+```
 
 ## Usage
 
-Equalize tile heights across rows with default options:
+Equalize element heights across rows:
 
 ```javascript
-$(elements).leveller();
+$('.example').leveller();
 ```
 
-Initialize with advanced options:
+Apply adjustments to a property of a child element:
 
 ```javascript
-// pass along options as object
-$(elements).leveller({ /* ... */ });
-// calling again on the same elements will retain options
+$('.example').leveller({
+  cssSelector: '.example-footer',
+  cssProperty: 'margin-top'
+});
+```
+
+Adjust on window resize:
+
+```javascript
+// pass along options (if any) the first time
+$('.example').leveller({ /* ... */ });
+
 $(window).resize(function(){
-  $(elements).leveller();
+  // calling again on the same elements will retain options
+  $('.example').leveller();
 });
 ```
 
@@ -46,6 +77,12 @@ Option | Default | Description
 `cssSelector` | | A child selector within the parent element to modify instead of the parent (useful for adding space between child elements instead of affecting the overall height).
 `columns` | | If specified, the plugin won't attempt to determine the column count per row. This can help performance if you know the column count will always be the same.
 `adjustBy` | | If the new heights are just a _tad_ off, specifying this option can allow you to adjust them by a number (`2`) or a CSS property (`border-top`).
+
+## History
+
+- **0.1.2**: Improved docs, `package.json`
+- **0.1.1**: UMD definition and strict equality
+- **0.1.0**: Hello world!
 
 ## License
 
