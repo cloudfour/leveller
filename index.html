@@ -24,6 +24,7 @@
 
     body {
       margin: 0;
+      padding-bottom: 32px;
       padding-bottom: 2rem;
     }
 
@@ -36,18 +37,22 @@
     h2,
     p,
     pre {
+      margin-top: 16px;
       margin-top: 1rem;
+      margin-bottom: 16px;
       margin-bottom: 1rem;
     }
 
     h1,
     h2 {
       font-weight: normal;
+      margin-top: 32px;
       margin-top: 2rem;
     }
 
     h1 {
       line-height: 1;
+      font-size: 48px;
       font-size: 3rem;
     }
 
@@ -62,12 +67,15 @@
     }
 
     .text-cautionary {
+      font-size: 24px;
       font-size: 1.5rem;
       font-style: italic;
+      margin-top: 32px;
       margin-top: 2rem;
     }
 
     .text-byline {
+      font-size: 14px;
       font-size: 0.875rem;
     }
 
@@ -76,13 +84,16 @@
     }
 
     .lead {
+      font-size: 18px;
       font-size: 1.125rem;
     }
 
     .container {
       margin-left: auto;
       margin-right: auto;
+      max-width: 512px;
       max-width: 32rem;
+      padding: 16px;
       padding: 1rem;
     }
 
@@ -106,25 +117,26 @@
 
     .list-inline li {
       display: inline-block;
+      font-size: 16px;
       font-size: 1rem;
-      margin-left: 0.25rem;
-      margin-right: 0.25rem;
-      margin-bottom: 0.25rem;
+      margin: 0 4px 4px;
+      margin: 0 0.25rem 0.25rem;
     }
 
     .btn {
       background-color: #fff;
-      border: 2px solid currentColor;
+      border: 2px solid #0088cc;
       display: inline-block;
+      font-size: 18px;
       font-size: 1.125rem;
       font-weight: bold;
       line-height: 1;
+      padding: 16px;
       padding: 1rem;
     }
 
     .btn-primary {
       background-color: #0088cc;
-      border-color: transparent;
       color: #fff;
     }
 
@@ -135,14 +147,18 @@
       list-style: none;
       margin-left: auto;
       margin-right: auto;
+      max-width: 1280px;
       max-width: 80rem;
       overflow: hidden;
+      padding: 8px;
       padding: 0.5rem;
     }
 
     .column {
       display: inline-block;
+      font-size: 16px;
       font-size: 1rem;
+      padding: 8px;
       padding: 0.5rem;
       vertical-align: top;
       width: 50%;
@@ -164,6 +180,7 @@
       background: #fff;
       border: 3px solid #222;
       color: #444;
+      padding: 16px;
       padding: 1rem;
     }
 
@@ -173,7 +190,8 @@
     }
 
     .tile-main {
-      font-size: 1.125em;
+      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     .tile-footer {
@@ -215,6 +233,14 @@
     }
 
   </style>
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <style>
+    .column {
+      width: 16.66666666%;
+    }
+  </style>
+  <![endif]-->
 </head>
 <body>
 
