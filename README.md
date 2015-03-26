@@ -18,7 +18,7 @@ Include the plugin after you've included [jQuery](http://jquery.com/):
 <script src="path/to/leveller.min.js"></script>
 ```
 
-### Using [npm](https://www.npmjs.com/) and [Browserify](http://browserify.org/)
+Or use [npm](https://www.npmjs.com/) and [Browserify](http://browserify.org/):
 
 ```
 npm install --save jquery
