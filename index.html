@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Leveller demo</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leveller - Equalize Element Heights</title>
+  <link href="//fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400italic,400,600" rel="stylesheet">
   <style>
+
+    /* Scaffolding */
+
     html {
-      background: #eee;
+      background: #f6f6f6;
       box-sizing: border-box;
-      font-family: sans-serif;
+      color: #444;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.4;
     }
 
     *, *:before, *:after {
@@ -14,108 +23,436 @@
     }
 
     body {
-      margin: 0 auto;
-      max-width: 52rem;
-      padding: 2rem;
+      margin: 0;
+      padding-bottom: 32px;
+      padding-bottom: 2rem;
+    }
+
+    a {
+      color: #0088cc;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    p,
+    pre {
+      margin-top: 16px;
+      margin-top: 1rem;
+      margin-bottom: 16px;
+      margin-bottom: 1rem;
+    }
+
+    h1,
+    h2 {
+      font-weight: normal;
+      margin-top: 32px;
+      margin-top: 2rem;
     }
 
     h1 {
-      color: #666;
-      font-size: 1.5rem;
-      font-weight: normal;
-      margin: 0;
+      line-height: 1;
+      font-size: 48px;
+      font-size: 3rem;
     }
 
-    .boxes {
-      font-size: 0;
-      margin: 1rem -1rem;
+    pre {
+      display: inline-block;
+      font-family: 'Inconsolata', monospace;
+      text-align: left;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-cautionary {
+      font-size: 24px;
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-top: 32px;
+      margin-top: 2rem;
+    }
+
+    .text-byline {
+      font-size: 14px;
+      font-size: 0.875rem;
+    }
+
+    .no-wrap {
+      white-space: nowrap;
+    }
+
+    .lead {
+      font-size: 18px;
+      font-size: 1.125rem;
+    }
+
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 512px;
+      max-width: 32rem;
+      padding: 16px;
+      padding: 1rem;
+    }
+
+    .light {
+      background-color: #fff;
       overflow: hidden;
+    }
+
+    .dark {
+      background-color: #444;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .list-inline {
+      font-size: 0;
+      list-style: none;
+      padding-left: 0;
       position: relative;
     }
 
-    .box {
-      background: #fff;
-      border: 2px solid #bbb;
+    .list-inline li {
       display: inline-block;
+      font-size: 16px;
       font-size: 1rem;
-      line-height: 1.3;
-      margin: 1rem;
+      margin: 0 4px 4px;
+      margin: 0 0.25rem 0.25rem;
+    }
+
+    .btn {
+      background-color: #fff;
+      border: 2px solid #0088cc;
+      display: inline-block;
+      font-size: 18px;
+      font-size: 1.125rem;
+      font-weight: bold;
+      line-height: 1;
+      padding: 16px;
       padding: 1rem;
-      vertical-align: bottom;
-      width: 8rem;
+    }
+
+    .btn-primary {
+      background-color: #0088cc;
+      color: #fff;
+    }
+
+    /* Demo */
+
+    .columns {
+      font-size: 0;
+      list-style: none;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1280px;
+      max-width: 80rem;
+      overflow: hidden;
+      padding: 8px;
+      padding: 0.5rem;
+    }
+
+    .column {
+      display: inline-block;
+      font-size: 16px;
+      font-size: 1rem;
+      padding: 8px;
+      padding: 0.5rem;
+      vertical-align: top;
+      width: 50%;
+    }
+
+      @media (min-width: 30em) {
+        .column {
+          width: 33.33333333%;
+        }
+      }
+
+      @media (min-width: 48em) {
+        .column {
+          width: 16.66666666%;
+        }
+      }
+
+    .tile {
+      background: #fff;
+      border: 3px solid #222;
+      color: #444;
+      padding: 16px;
+      padding: 1rem;
+    }
+
+    .tile-main,
+    .tile-footer {
+      margin: 0;
+    }
+
+    .tile-main {
+      font-size: 18px;
+      font-size: 1.125rem;
+      margin-bottom: 4px;
+      margin-bottom: 0.25rem;
+    }
+
+    .tile-footer {
+      color: #aaa;
+    }
+
+    /* Flex demo */
+
+    .columns-flex,
+    .columns-flex .column,
+    .columns-flex .tile {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .columns-flex {
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+    }
+
+    .columns-flex .column,
+    .columns-flex .tile {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+    }
+
+    .columns-flex .tile,
+    .columns-flex .tile-main {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+    }
+
+  </style>
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <style>
+    .column {
+      width: 16.66666666%;
     }
   </style>
+  <![endif]-->
 </head>
 <body>
 
-<h1>The Beatles</h1>
+<header class="light">
+  <div class="container text-center">
+    <h1><a href="https://github.com/cloudfour/leveller/">Leveller</a></h1>
+    <p class="lead">A jQuery plugin for equalizing <span class="no-wrap">element heights</span>.</p>
+  </div>
+</header>
 
-<div class="boxes">
-  <div class="box">
-    <div>Please Please Me</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>With the Beatles</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>A Hard Day&rsquo;s Night</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Beatles for Sale</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Help!</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Rubber Soul</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Revolver</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Sgt. Pepper&rsquo;s Lonely Hearts Club Band</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>The Beatles</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Yellow Submarine</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Abbey Road</div>
-    <button>Listen</button>
-  </div>
-  <div class="box">
-    <div>Let It Be</div>
-    <button>Listen</button>
-  </div>
-</div>
+<main>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="jquery.leveller.js"></script>
+  <div class="container">
+    <h2 class="text-center">The Problem</h2>
+    <p>These tiles vary in height, making them difficult to scan visually.</p>
+  </div>
+
+  <div class="dark">
+    <ul class="columns">
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">The Man in the High Castle</p>
+          <p class="tile-footer"><time>1962</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Martian Time-Slip</p>
+          <p class="tile-footer"><time>1964</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Do An&shy;droids Dream of Electric Sheep?</p>
+          <p class="tile-footer"><time>1968</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Ubik</p>
+          <p class="tile-footer"><time>1969</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Flow My Tears, the Police&shy;man Said</p>
+          <p class="tile-footer"><time>1974</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">A Scanner Darkly</p>
+          <p class="tile-footer"><time>1977</time></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h2 class="text-center">Try This First</h2>
+    <p>Before using this plugin, see if <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a> might solve the problem.</p>
+  </div>
+
+  <div class="dark">
+    <ul class="columns columns-flex">
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">The Man in the High Castle</p>
+          <p class="tile-footer"><time>1962</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Martian Time-Slip</p>
+          <p class="tile-footer"><time>1964</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Do An&shy;droids Dream of Electric Sheep?</p>
+          <p class="tile-footer"><time>1968</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Ubik</p>
+          <p class="tile-footer"><time>1969</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Flow My Tears, the Police&shy;man Said</p>
+          <p class="tile-footer"><time>1974</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">A Scanner Darkly</p>
+          <p class="tile-footer"><time>1977</time></p>
+        </div>
+      </li>
+    </ul>
+    <div class="container text-center">
+      <pre><code>.columns, .column, .tile {
+  display: flex;
+}
+
+.columns {
+  flex-wrap: wrap;
+}
+
+.column, .tile {
+  flex-direction: column;
+}
+
+.tile, .tile-main {
+  flex: 1;
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="text-center">When All Else Fails</h2>
+    <p>Maybe you inherited someone else&rsquo;s code. Maybe you&rsquo;re still supporting some ancient browser. Or maybe that frame&shy;work every&shy;one tweeted about last month doesn&rsquo;t want to play nice with your adjust&shy;ments.</p>
+    <p>In those cases, <b>Leveller</b> can help.</p>
+  </div>
+
+  <div class="dark">
+    <ul class="columns" id="example">
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">The Man in the High Castle</p>
+          <p class="tile-footer"><time>1962</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Martian Time-Slip</p>
+          <p class="tile-footer"><time>1964</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Do An&shy;droids Dream of Electric Sheep?</p>
+          <p class="tile-footer"><time>1968</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Ubik</p>
+          <p class="tile-footer"><time>1969</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">Flow My Tears, the Police&shy;man Said</p>
+          <p class="tile-footer"><time>1974</time></p>
+        </div>
+      </li>
+      <li class="column">
+        <div class="tile">
+          <p class="tile-main">A Scanner Darkly</p>
+          <p class="tile-footer"><time>1977</time></p>
+        </div>
+      </li>
+    </ul>
+    <div class="container text-center">
+      <pre><code>var $tiles = $('#example .tile');
+
+$tiles.leveller({
+  cssSelector: '.tile-main'
+});
+
+$(window).resize(function(){
+  $tiles.leveller();
+});</code></pre>
+    </div>
+  </div>
+
+
+  <p class="container text-center text-cautionary">Please level responsibly.</p>
+
+  <div class="text-center">
+    <ul class="list-inline">
+      <li><a href="http://blog.cloudfour.com/leveller/‎" class="btn">Blog post</a></li>
+      <li><a href="https://github.com/cloudfour/leveller/" class="btn btn-primary">View on GitHub</a></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="container text-center">
+  <p class="text-byline">Made by your friends at <a href="http://cloudfour.com">Cloud Four</a></p>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="leveller.min.js"></script>
 <script>
-$(function(){
-  // initialization with advanced options
-  $('.box').leveller({
-    alignment: 'bottom',
-    cssSelector: 'button',
-    cssProperty: 'margin-top',
-    adjustBy: 'border-top'
+$(window).load(function(){
+
+  var $tiles = $('#example .tile');
+
+  $tiles.leveller({
+    cssSelector: '.tile-main'
   });
-  // level again on resize
+
   $(window).resize(function(){
-    $('.box').leveller();
+    $tiles.leveller();
   });
+
 });
 </script>
 

@@ -1,0 +1,33 @@
+{
+  "name": "leveller",
+  "version": "1.0.0",
+  "description": "A jQuery plugin for equalizing element heights.",
+  "main": "leveller.js",
+  "scripts": {
+    "minify": "uglifyjs leveller.js -o leveller.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudfour/leveller.git"
+  },
+  "keywords": [
+    "equalize",
+    "height",
+    "dom",
+    "equal",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Cloud Four",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloudfour/leveller/issues"
+  },
+  "homepage": "https://github.com/cloudfour/leveller",
+  "dependencies": {
+    "jquery": "^2.1.3"
+  },
+  "devDependencies": {
+    "uglify-js": "^2.4.17"
+  }
+}
