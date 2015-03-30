@@ -2,7 +2,7 @@
 
 A jQuery plugin for equalizing element heights.
 
-If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/a-guide-to-flexbox/). See the [demo]() for an example.
+If you can, [you should use Flexbox instead](http://css-tricks.com/snippets/css/a-guide-to-flexbox/). See the [demo](http://cloudfour.github.io/leveller/) for an example.
 
 For simple, single-row adjustments, [Equalizer](https://github.com/skrajewski/Equalizer) is a leaner, dependency-free solution.
 
@@ -31,13 +31,21 @@ require('leveller');
 
 ## Usage
 
-Equalize element heights across rows:
+Equalize element heights across rows (uses `min-height` on the elements by default):
 
 ```javascript
 $('.example .column').leveller();
 ```
 
-Apply adjustments to a property of a child element:
+If you want elements to appear bottom-aligned, you can apply the `min-height` adjustment to a child selector instead:
+
+```javascript
+$('.example .column').leveller({
+  cssSelector: '.column-main'
+});
+```
+
+You can also change which property is used for the adjustment. In this case, padding will be added to the top of `.column-footer` until the element is correctly sized:
 
 ```javascript
 $('.example .column').leveller({
@@ -46,7 +54,7 @@ $('.example .column').leveller({
 });
 ```
 
-Adjust on window resize:
+Adjust on window resize ([debounce](http://davidwalsh.name/javascript-debounce-function) for performance):
 
 ```javascript
 // pass along options (if any) the first time
